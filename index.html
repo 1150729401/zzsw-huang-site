@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>新生答疑助手</title>
+    <meta name="description" content="新生专属智能问答知识库" />
+    <link rel="stylesheet" href="./styles.css" />
+  <script src="https://beacon.cdn.qq.com/sdk/4.5.9/beacon_web.min.js"></script>
+<script>
+(function(){
+  try{
+    var beacon=new BeaconAction({
+      appkey:'0WEB06U85YBSLJNL',
+      versionCode:'1.0.0',
+      channelID:'share',
+      delay:1000,
+      sessionDuration:30*60*1000,
+      isOversea:false,
+      needReportRqdEvent:false
+    });
+    beacon.onDirectUserAction('preview_page_view',{
+      'url':location.href,
+      'referrer':document.referrer,
+      'title':document.title,
+      'sandbox_id':'00702cd8df984006aed8cfbcebbd07d0'
+    });
+  }catch(e){}
+})();
+</script></head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <button id="backBtn" class="back-btn" title="返回" type="button" aria-label="返回">‹</button>
+          <div class="avatar-wrap">
+            <img id="headerAvatar" class="avatar small" alt="头像" />
+            <span class="online-dot"></span>
+          </div>
+          <div class="topbar-text">
+            <h1 id="headerName">新生助手</h1>
+            <p><span class="mini-dot"></span><span id="headerStatus">新生答疑助手 · 在线</span></p>
+          </div>
+          <div class="top-actions">
+            <button id="downloadBtn" class="icon-btn" title="新生资料下载" type="button">文</button>
+            <button id="wechatBtn" class="icon-btn" title="扫码加微信" type="button">微</button>
+          </div>
+        </div>
+      </header>
+
+      <main id="chatArea" class="content">
+        <section id="welcomePanel" class="welcome">
+          <div class="avatar-hero-wrap">
+            <img id="heroAvatar" class="avatar hero" alt="头像" />
+            <span class="online-dot hero-dot"></span>
+          </div>
+          <h2 id="profileName">新生助手</h2>
+          <p id="schoolName" class="muted">你的学校名称</p>
+          <p id="subtitle" class="muted">- 新生专属答疑助手 -</p>
+          <p id="serviceLine" class="tiny line">7x24小时在线，有问必答</p>
+          <p id="admissionPhone" class="tiny line"></p>
+          <p id="consultPhone" class="tiny line"></p>
+          <p id="notice" class="note"></p>
+
+          <div class="suggestions">
+            <p class="suggestion-title">试试问我：</p>
+            <div id="questionGrid" class="question-grid"></div>
+          </div>
+
+          <div class="qr-block">
+            <button id="qrPreview" class="qr-card" type="button">
+              <img id="wechatQr" alt="微信二维码" />
+            </button>
+            <p id="wechatLabel" class="qr-label">微信咨询</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="composer">
+        <form id="askForm" class="composer-inner">
+          <div class="input-wrap">
+            <textarea id="questionInput" rows="1" placeholder="有什么问题都可以问呀～"></textarea>
+          </div>
+          <button id="sendBtn" class="send-btn" type="submit" disabled>↑</button>
+        </form>
+        <p id="inputTip" class="footer-tip">Enter 发送 · Shift+Enter 换行</p>
+        <p id="disclaimer" class="footer-tip pale">新生问题仅供参考，请以学校官方通知为准</p>
+      </footer>
+    </div>
+
+    <dialog id="qrDialog" class="dialog">
+      <button id="closeDialog" class="dialog-close" type="button">×</button>
+      <img id="dialogQr" alt="微信二维码大图" />
+      <p id="dialogText">扫码咨询</p>
+    </dialog>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
